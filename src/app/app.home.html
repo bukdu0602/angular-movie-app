@@ -1,0 +1,39 @@
+<body class="wrapper">
+    
+    <router-outlet></router-outlet>
+                  <div class="gandp">
+                    <section>
+                    <label for="genres">Genres</label>
+                    <select name="genres" [(ngModel)]="genreNumSelection" (change)="changeGenNum()">
+                        <option *ngFor="let genre of _genreArray">
+                          {{genre.id}} {{genre.name}}
+                        </option>
+                    </select>
+                  </section>
+                  <section>
+                    <label for="page">Page</label>
+                    <select name="page" [(ngModel)]="pageSelection" (change)="changePage()">
+                      <option *ngFor="let item of pageArray">
+                      {{item}}
+                      </option>
+                    </select>
+                  </section>
+                  </div>
+    
+    
+                    <div class="card">
+                    <ul>
+                      
+                        <li *ngFor="let movie of _movieArray2">
+                          <child [posterPath]="movie.poster_path"></child>
+                          <br><br>
+                          Title: {{movie.title}} 
+                        <br><br>
+                        Overview: {{movie.overview}}
+                        
+                        
+                        </li>
+                    </ul>
+                  </div>
+                  
+    </body>

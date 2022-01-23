@@ -15,45 +15,10 @@ let GENRE_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key='
                 + API_KEY
                 + '&language=en-US';
 @Component({
-    template: `<body class="wrapper">
-    
-    <router-outlet></router-outlet>
-                    <h1>Genres</h1>
-                    <select [(ngModel)]="genreNumSelection" (change)="changeGenNum()">
-                        <option *ngFor="let genre of _genreArray">
-                          {{genre.id}} {{genre.name}}
-                        </option>
-                    </select>
-                    <label for="page">Page</label>
-                    <select name="page" [(ngModel)]="pageSelection" (change)="changePage()">
-                      <option *ngFor="let item of pageArray">
-                      {{item}}
-                      </option>
-                    </select>
-    
-                    <h1>Movies {{pageSelection}}</h1>
-    
-    
-                    <div class="card">
-                    <ul>
-                      
-                        <li *ngFor="let movie of _movieArray2">
-                          <child [posterPath]="movie.poster_path"></child>
-                          Title: {{movie.title}} 
-                        <br>
-                        Genre ID: {{movie.genre_ids}}
-                        <br>
-                        Overview: {{movie.overview}}
-                        
-                        
-                        </li>
-                    </ul>
-                  </div>
-                  
-    </body>`,
+    templateUrl: './app.home.html',
     styleUrls: [ './app.component.css']
 })
-export class PageBComponent {  _movieArray!: Array<any>;
+export class HomeComponent {  _movieArray!: Array<any>;
     _genreArray!: Array<any>;
     _http:HttpClient;
     genreNumSelection!: string;

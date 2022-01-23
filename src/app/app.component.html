@@ -1,41 +1,9 @@
 <body class="wrapper">
 <nav>
   <ul>
-    <li><a routerLink="/page-b"  routerLinkActive="active">Home</a></li>
-    <li><a routerLink="/page-a" routerLinkActive="active">&nbsp;&nbsp;&nbsp;&nbsp;About</a></li>
+    <li><a routerLink="/home"  routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">&nbsp;&nbsp;&nbsp;&nbsp;About</a></li>
   </ul>
 </nav>
 <router-outlet></router-outlet>
-                <!-- <h1>Genres</h1>
-                <select [(ngModel)]="genreNumSelection" (change)="changeGenNum()">
-                    <option *ngFor="let genre of _genreArray">
-                      {{genre.id}} {{genre.name}}
-                    </option>
-                </select>
-                <label for="page">Page</label>
-                <select name="page" [(ngModel)]="pageSelection" (change)="changePage()">
-                  <option *ngFor="let item of pageArray">
-                  {{item}}
-                  </option>
-                </select>
-
-                <h1>Movies {{pageSelection}}</h1>
-
-
-                <div class="card">
-                <ul>
-                  
-                    <li *ngFor="let movie of _movieArray2">
-                      <child [posterPath]="movie.poster_path"></child>
-                      Title: {{movie.title}} 
-                    <br>
-                    Genre ID: {{movie.genre_ids}}
-                    <br>
-                    Overview: {{movie.overview}}
-                    
-                    
-                    </li>
-                </ul>
-              </div> -->
-              
 </body>

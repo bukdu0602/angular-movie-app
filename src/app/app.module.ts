@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent }  from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { child }  from './app.child';
-import { PageAComponent } from './app.page-a';
-import { PageBComponent } from './app.page-b';
+import { AboutComponent } from './app.about';
+import { HomeComponent } from './app.home';
 import { routing }        from './app.routing';
 @NgModule({
   declarations: [
-    AppComponent, child, PageAComponent, PageBComponent
+    AppComponent, child, AboutComponent, HomeComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, routing

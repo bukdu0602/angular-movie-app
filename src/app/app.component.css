@@ -47,9 +47,7 @@ nav a {
 }
 
 .card ul {
-    /* max-width: 500px; */
     list-style-type: none;
-
     display: flex;
     justify-content: space-between;
 }
@@ -58,7 +56,11 @@ nav a {
     margin: 20px;
     background-color: grey;
 }
-.card img{
+
+
+.gandp {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 20px;
 }
