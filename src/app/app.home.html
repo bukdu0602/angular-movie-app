@@ -27,10 +27,11 @@
                         <li *ngFor="let movie of _movieArray2">
                           <child [posterPath]="movie.poster_path"></child>
                           <br><br>
-                          Title: {{movie.title}} 
-                        <br><br>
-                        Overview: {{movie.overview}}
-                        
+                          <div class="mvtitle">
+                            Title: {{movie.title}} 
+                            <br><br>
+                            Overview: {{movie.overview}}
+                          </div>
                         
                         </li>
                     </ul>
