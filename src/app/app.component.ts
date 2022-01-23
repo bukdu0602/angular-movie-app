@@ -1,118 +1,150 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 
-const API_KEY  = 'bcc81f6f64d6413280d85014e72e4b15'; // Use v3
-const BASE_URL  = 'http://api.themoviedb.org/3/discover/movie?api_key='
-                + API_KEY
 
-                // Hint: You will need a function to change this URL to 
-                // dynamically modify the start and end date range.
-                + '&primary_release_date.gte=2019-01-01'
-                + '&primary_release_date.lte=2019-02-25'
-                
-                // Hint: You will want to dynamically change the page number 
-                // and genre number.
-                + '&page=1&with_genres=16';
-
-const GENRE_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key='
-                + API_KEY
-                + '&language=en-US';
+// // Use v3
+// const baseURL  = 'http://api.themoviedb.org/3/discover/movie?api_key='
+// const API_KEY  = 'bcc81f6f64d6413280d85014e72e4b15'; 
+// const dateStartA = '&primary_release_date.gte='
+// let dateStartB = '2021-11-23'
+// const dateEndA = '&primary_release_date.lte='
+// let dateEndB = '2022-01-22'
+// const genreA     =  '&page=1&with_genres=';
+// let genreNum   = "18"
+// let GENRE_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key='
+//                 + API_KEY
+//                 + '&language=en-US';
    
 @Component({
     selector: 'app-root',
-    template: `
-    <a href="">HOME</a>
-    <a href="">ABOUT</a>
-                <h1>Genres</h1>
-                <select>
-                    <option *ngFor="let genre of _genreArray">
-                    {{genre.id}} {{genre.name}}
-                   
-                    </option>
-                </select>
-                <h1>Movies</h1>
-                <ul>
-                    <li *ngFor="let movie of _movieArray">
-                    Title: {{movie.title}} 
-                    <br>
-                    Genre ID: {{movie.genre_ids}}
-                    <br>
-                    Overview: {{movie.overview}}
-<!--Hint: You need to modify this line dynamically to show the proper image -->
-                    <img src='https://image.tmdb.org/t/p/w500/{{movie.poster_path}}'/> 
-                    </li>
-                </ul>
-              `
+    templateUrl: './app.component.html',
+    styleUrls: [ './app.component.css']
+  
 })
 export class AppComponent {
-    _movieArray!: Array<any>;
-    _genreArray!: Array<any>;
-    _http:HttpClient;
+//     _movieArray!: Array<any>;
+//     _genreArray!: Array<any>;
+//     _http:HttpClient;
+//     genreNumSelection!: string;
+//     pageSelection!: string;
+//     numOfPage!: number;
+//     pageArray: Array<number> = [];
+//     movieArray1: Array<any> = [];
+//     movieArray2: Array<any> = [];
+//     movieArray3: Array<any> = [];
+//     movieArray4: Array<any> = [];
+//     movieArray5: Array<any> = [];
+//     _movieArray2!: Array<any>;
+//     // Since we are using a provider above we can receive 
+//     // an instance through an instructor.
+//     constructor(private http: HttpClient) {
+//         this._http = http;
+//     }
 
-    // Since we are using a provider above we can receive 
-    // an instance through an instructor.
-    constructor(private http: HttpClient) {
-        this._http = http;
-    }
+//     ngOnInit() {
+//         this.getDateRange();
+//         this.getMovies();
+//         this.getGenres();
+        
+//     }
+//     changePage(){
+//         if(this.pageSelection == "0"){
+//             this._movieArray2 = this.movieArray1
+//         }else if(this.pageSelection == "1"){
+//             this._movieArray2 = this.movieArray2
+//         }else if(this.pageSelection == "2"){
+//             this._movieArray2 = this.movieArray3
+//         }else if(this.pageSelection == "3"){
+//             this._movieArray2 = this.movieArray4
+//         }else if(this.pageSelection == "4"){
+//             this._movieArray2 = this.movieArray5
+//         }
+        
+//     }
 
-    ngOnInit() {
-        this.getMovies();
-        this.getGenres();
-        this.getDateRange();
-    }
+//     changeGenNum(){
+//         genreNum = this.genreNumSelection.split(" ")[0]
 
-    getDateRange() {
-        let today = new Date();
-        this.getFormattedDate(today);
+//         this.getMovies();
+//     }
 
-        let sixtyDaysAgo = new Date();
-        sixtyDaysAgo.setDate( sixtyDaysAgo.getDate() - 60 );
-        this.getFormattedDate(sixtyDaysAgo);
-    }
+//     getDateRange() {
+//         let today = new Date();
+//         dateEndB =  today.getFullYear()+ '-'
+//                     + ('0' + (today.getMonth()+1)).slice(-2) + '-'
+//                     + ('0' + today.getDate()).slice(-2); 
+//         let sixtyDaysAgo = new Date();
+//         sixtyDaysAgo.setDate( sixtyDaysAgo.getDate() - 30 );
+//         dateStartB = sixtyDaysAgo.getFullYear()+ '-'
+//                     + ('0' + (sixtyDaysAgo.getMonth()+1)).slice(-2) + '-'
+//                     + ('0' + sixtyDaysAgo.getDate()).slice(-2); 
+//     }
 
-    // Hint.
-    // Months and days less than 10 you may want to 
-    // create some kind of string formater that appends a 0 
-    // before the day or month number.
-    getFormattedDate(dt:Date) {
-        // alert("Current Day: " + dt.getDate() 
-        //     // The month count starts at 0 so Janaury is month number 0.
-        //     + " Month: " + (Number(dt.getMonth()) + 1) 
-        //     + " Year: "  + dt.getFullYear());
-    }
 
-    getMovies() {        
-      this._http.get<any>(BASE_URL)
-      .subscribe({
-          next: (data) => {
-              let page = data.page;
-              let totalPages = data.total_pages;
-              console.log("Page number: " + page 
-                  + " Total Pages: " + totalPages);
+//     getMovies() {    
+//       this._http.get<any>(baseURL + API_KEY + dateStartA + dateStartB + dateEndA
+//         + dateEndB + genreA + genreNum)
+//       .subscribe({
+//           next: (data) => {
+//               let page = data.page;
+//               let totalPages = data.total_pages;
+//               console.log("Page number: " + page 
+//                   + " Total Pages: " + totalPages);
+//               this._movieArray  = data.results;
+//               this.numOfPage = Math.ceil(this._movieArray.length/4)
+//               this.pageArray = []
+//               this.movieArray1 = []
+//               this.movieArray2 = []
+//               this.movieArray3 = []
+//               this.movieArray4 = []
+//               this.movieArray5 = []
 
-              this._movieArray  = data.results;
-              console.log(this._movieArray);
-          },
-          error: (er) => { 
-              // Let user know about the error.
-              alert(er);
-              console.error(er);
-          }
-      });
-  }
+//              for(let i=0; i<this.numOfPage; i++ ){
+//                 this.pageArray.push(i)
+//              }
+//              for(let i=0; i<this._movieArray.length; i++ ){
 
-  getGenres() {
-      this._http.get<any>(GENRE_URL)
-      .subscribe({
-          next: (data) => {
-              this._genreArray = data.genres;
-              console.log(JSON.stringify(this._genreArray));
-          },
-          error: (er) => {
-              // Let user know about the error.
-              alert(er);
-              console.error(er)
-          }
-      });
-  }
+//                 if(i < 4){
+//                     this.movieArray1.push(this._movieArray[i])
+//                 }else if (i < 8){
+//                     this.movieArray2.push(this._movieArray[i])
+//                 }
+//                 else if (i < 12){
+//                     this.movieArray3.push(this._movieArray[i])
+//                 }
+//                 else if (i < 16){
+//                     this.movieArray4.push(this._movieArray[i])
+//                 }
+//                 else if (i < 20){
+//                     this.movieArray5.push(this._movieArray[i])
+//                 }
+//              }
+//              this._movieArray2 = this.movieArray1
+//              console.log(this.movieArray5)
+//              this.pageSelection = "0"
+
+
+//           },
+//           error: (er) => { 
+//               // Let user know about the error.
+//               alert(er);
+//               console.error(er);
+//           }
+//       });
+//   }
+
+//   getGenres() {
+//       this._http.get<any>(GENRE_URL)
+//       .subscribe({
+//           next: (data) => {
+//               this._genreArray = data.genres;
+//             //   console.log(JSON.stringify(this._genreArray));
+//           },
+//           error: (er) => {
+//               // Let user know about the error.
+//               alert(er);
+//               console.error(er)
+//           }
+//       });
+//   }
 }
